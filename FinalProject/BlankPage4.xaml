@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="FinalProject.BlankPage4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FinalProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="cvsProjects" IsSourceGrouped="True" 
+                              ItemsPath="Activities"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <GridView ItemsSource="{Binding Source={StaticResource cvsProjects}}" MaxHeight="500">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10">
+                        <TextBlock Text="{Binding PATIENTID}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding PATIENTNAME}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding ADDRESS}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding PATIENTNAGE}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding PATIENTPHONE}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding GENDER}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding ADMISSIONDATE}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+
+                        <Image Source="{Binding IMAGE}" Width="50" Height="40" />
+                        <Button Content="Details" Click="clickMe" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="2"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+
+
+        </GridView>
+    </Grid>
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="ListMe" 
+            Label="ListView" Content="Details View" Click="dowork2"/>
+            <AppBarButton x:Name="Insert" 
+            Label="Add New" Content="Add New" Click="dowork"/>
+        </CommandBar>
+    </Page.TopAppBar>
+</Page>
